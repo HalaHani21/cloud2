@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: "Animated Button",
+    description: "A beautiful animated button with hover effects",
+    codepen: "https://codepen.io/trending"
+  },
+  {
+    title: "Card Gallery",
+    description: "Responsive card layout with grid system",
+    codepen: "https://codepen.io/picks"
+  },
+  {
+    title: "Navigation Menu",
+    description: "Modern navigation menu with smooth transitions",
+    codepen: "https://codepen.io/popular"
+  }
+];
+---
+
+<Layout>
+  <main class="container">
+    <h1>Static Website Gallery</h1>
+    <div class="project-grid">
+      {projects.map(project => (
+        <div class="project-card">
+          <h2>{project.title}</h2>
+          <p>{project.description}</p>
+          <a href={project.codepen} target="_blank" rel="noopener noreferrer">
+            View on CodePen
+          </a>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-card h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .project-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-card a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s ease-in-out;
+  }
+
+  .project-card a:hover {
+    background: #2980b9;
+  }
+</style>
